@@ -1,0 +1,474 @@
+BEGIN HEADER
+   CharacterSet "CP1252"
+   ExportingTool "IBM InfoSphere DataStage Export"
+   ToolVersion "8"
+   ServerName "SAMPLE.IBM.COM"
+   ToolInstanceID "dstage1"
+   MDISVersion "1.0"a
+   Date "2017-12-08"
+   Time "19.13.51"
+   ServerVersion "11.5"
+END HEADER
+BEGIN DSJOB
+   Identifier "WebHDFS_HA"
+   DateModified "2017-12-08"
+   TimeModified "11.11.59"
+   BEGIN DSRECORD
+      Identifier "ROOT"
+      OLEType "CJobDefn"
+      Readonly "0"
+      Name "WebHDFS_HA"
+      NextID "1"
+      Container "V0"
+      JobVersion "56.0.0"
+      ControlAfterSubr "0"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "WebHDFS"
+         Prompt "WebHDFS parameters"
+         Default "(As pre-defined)"
+         ParamType "13"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "AdvancedRuntimeOptions"
+         Value "#DSProjectARTOptions#"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceMode"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSeq"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceRecords"
+         Value "100"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TraceSkip"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "TracePeriod"
+         Value "1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RecordJobPerformanceData"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "IdentList"
+         Value "File_Connector|Copy"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "ClientCodePage"
+         Value "1252"
+      END DSSUBRECORD
+      NULLIndicatorPosition "0"
+      OrchestrateCode =+=+=+=
+#################################################################
+#### STAGE: File_Connector
+## Operator
+pxbridge
+## Operator options
+-Orientation stage
+-XMLProperties '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>1</Context><Variant type=\\'string\\'>1.6</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP></Common><Connection><FileSystem modified=\\'1\\' type=\\'int\\'><![CDATA[1]]></FileSystem><UseCustomURL type=\\'bool\\'><![CDATA[0]]></UseCustomURL><ssl type=\\'bool\\'><![CDATA[0]]></ssl><Kerberos modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></Kerberos><UseKeytab modified=\\'1\\' type=\\'bool\\'><![CDATA[1]]></UseKeytab><Host modified=\\'1\\' type=\\'string\\'><![CDATA[[&"WebHDFS.NameNode"]]]></Host><Username modified=\\'1\\' type=\\'string\\'><![CDATA[[&"WebHDFS.Principal"]]]></Username><Keytab modified=\\'1\\' type=\\'string\\'><![CDATA[[&"WebHDFS.Keytab"]]]></Keytab></Connection><Usage><FilenameSource modified=\\'1\\' type=\\'string\\'><![CDATA[[&"WebHDFS.HDFSFileName"]]]></FilenameSource><UserClassName type=\\'string\\'><![CDATA[com.ibm.iis.cc.filesystem.FileSystem]]></UserClassName><RejectMode type=\\'int\\'><![CDATA[0]]></RejectMode><FileFormat type=\\'int\\'><![CDATA[0]]><DelimitedSyntax><Encoding type=\\'string\\'><![CDATA[]]></Encoding><RecordDef collapsed=\\'1\\' type=\\'int\\'><![CDATA[0]]></RecordDef><Header collapsed=\\'1\\' type=\\'bool\\'><![CDATA[0]]></Header><FieldDelimiter type=\\'string\\'><![CDATA[,]]></FieldDelimiter><RowDelimiter type=\\'string\\'><![CDATA[<NL>]]></RowDelimiter><Quotes type=\\'int\\'><![CDATA[0]]></Quotes><FieldFormats></FieldFormats></DelimitedSyntax></FileFormat><Java collapsed=\\'1\\'><HeapSize type=\\'int\\'><![CDATA[256]]></HeapSize><ConnectorOtherOptions type=\\'string\\'><![CDATA[-Dcom.ibm.tools.attach.enable=no -Dcom.ibm.is.cc.options=noisfjars]]></ConnectorOtherOptions></Java></Usage></Properties >'
+-connector '{
+   variant=\\'1.6\\', 
+   library="java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar", 
+   version=1.0, 
+   variantlist=\\'V1;1.6::"java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar"\\', 
+   versionlist=\\'1.0\\', 
+   name=FileConnector
+}'
+-linkXMLProperties source 0 '<?xml version=\\'1.0\\' encoding=\\'UTF-16\\'?><Properties version=\\'1.1\\'><Common><Context type=\\'int\\'>1</Context><Variant type=\\'string\\'>1.6</Variant><DescriptorVersion type=\\'string\\'>1.0</DescriptorVersion><PartitionType type=\\'int\\'>-1</PartitionType><RCP type=\\'int\\'>0</RCP><Reject></Reject></Common><Usage><IsReject type=\\'bool\\'><![CDATA[0]]></IsReject></Usage></Properties >'
+-source 0 '{
+      DSSQLType={c1=12}, 
+      DSSQLPrecision={c1=500}, 
+      DSSchema=\\'record
+         (
+           c1\\:string\\[max\\=500\\]\\;
+         )\\'
+}'
+   
+
+## General options
+[ident('File_Connector'); jobmon_ident('File_Connector')]
+## Outputs
+0> [modify (
+  c1:not_nullable string[max=500]=c1;
+keep
+  c1;
+)] 'File_Connector:DSLink.v'
+;
+
+#################################################################
+#### STAGE: Copy
+## Operator
+copy
+## General options
+[ident('Copy'); jobmon_ident('Copy')]
+## Inputs
+0< [] 'File_Connector:DSLink.v'
+;
+
+
+=+=+=+=
+      IsTemplate "0"
+      NLSLocale ",,,,"
+      JobType "3"
+      Category "\\_Demo"
+      CenturyBreakYear "30"
+      NextAliasID "2"
+      ParameterFileDDName "DD00001"
+      ReservedWordCheck "1"
+      TransactionSize "0"
+      ValidationStatus "0"
+      Uploadable "0"
+      PgmCustomizationFlag "0"
+      JobReportFlag "0"
+      AllowMultipleInvocations "0"
+      Act2ActOverideDefaults "0"
+      Act2ActEnableRowBuffer "0"
+      Act2ActUseIPC "0"
+      Act2ActBufferSize "0"
+      Act2ActIPCTimeout "0"
+      ExpressionSemanticCheckFlag "0"
+      TraceOption "0"
+      EnableCacheSharing "0"
+      RuntimeColumnPropagation "0"
+      RelStagesInJobStatus "-1"
+      WebServiceEnabled "0"
+      MFProcessMetaData "0"
+      MFProcessMetaDataXMLFileExchangeMethod "0"
+      IMSProgType "0"
+      CopyLibPrefix "ARDT"
+      RecordPerformanceResults "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0"
+      OLEType "CContainerView"
+      Readonly "0"
+      Name "Job"
+      NextID "1"
+      IsTopLevel "0"
+      StageList "V0S0|V0S3"
+      StageXPos "120|360"
+      StageYPos "216|216"
+      StageTypes "CCustomStage.CC_GUI|CCustomStage"
+      NextStageID "4"
+      SnapToGrid "1"
+      GridLines "0"
+      ZoomValue "100"
+      StageXSize "48|48"
+      StageYSize "48|48"
+      ContainerViewSizing "0104 0104 0766 0543 0000 0001 0000 0120"
+      StageNames "File_Connector|Copy"
+      StageTypeIDs "FileConnectorPX|PxCopy"
+      LinkNames "DSLink| "
+      LinkHasMetaDatas "True| "
+      LinkTypes "1| "
+      LinkNamePositionXs "225| "
+      LinkNamePositionYs "240| "
+      TargetStageIDs "V0S3| "
+      SourceStageEffectiveExecutionModes "2| "
+      SourceStageRuntimeExecutionModes "2| "
+      TargetStageEffectiveExecutionModes "2| "
+      TargetStageRuntimeExecutionModes "2| "
+      LinkIsSingleOperatorLookup "False| "
+      LinkIsSortSequential "False| "
+      LinkSortMode "0| "
+      LinkPartColMode "1| "
+      LinkSourcePinIDs "V0S0P1| "
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S0"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "File_Connector"
+      NextID "2"
+      OutputPins "V0S0P1"
+      StageType "FileConnectorPX"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "1.6"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "\"java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar\""
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariants"
+         Value "V1;1.6::\"java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar\""
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsLibraries"
+         Value "\"java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar\""
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "SupportedVariantsVersions"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Orientation"
+         Value "stage"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "FileConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Engine"
+         Value "EE"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "source"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "FileSystem"
+         Value "/Connection/FileSystem"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UseCustomURL"
+         Value "/Connection/UseCustomURL"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectionString"
+         Value "/Connection/Host"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Port"
+         Value "/Connection/Port"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Username"
+         Value "/Connection/Username"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Password"
+         Value "/Connection/Password"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ssl"
+         Value "/Connection/ssl"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Kerberos"
+         Value "/Connection/Kerberos"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "UseKeytab"
+         Value "/Connection/UseKeytab"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Keytab"
+         Value "/Connection/Keytab"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "CustomURL"
+         Value "/Connection/CustomURL"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>1</Context><Variant type='string'>1.6</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP></Common><Connection><FileSystem modified='1' type='int'><![CDATA[1]]></FileSystem><UseCustomURL type='bool'><![CDATA[0]]></UseCustomURL><ssl type='bool'><![CDATA[0]]></ssl><Kerberos modified='1' type='bool'><![CDATA[1]]></Kerberos><UseKeytab modified='1' type='bool'><![CDATA[1]]></UseKeytab><Host modified='1' type='string'><![CDATA[#WebHDFS.NameNode#]]></Host><Username modified='1' type='string'><![CDATA[#WebHDFS.Principal#]]></Username><Keytab modified='1' type='string'><![CDATA[#WebHDFS.Keytab#]]></Keytab></Connection><Usage><FilenameSource modified='1' type='string'><![CDATA[#WebHDFS.HDFSFileName#]]></FilenameSource><UserClassName type='string'><![CDATA[com.ibm.iis.cc.filesystem.FileSystem]]></UserClassName><RejectMode type='int'><![CDATA[0]]></RejectMode><FileFormat type='int'><![CDATA[0]]><DelimitedSyntax><Encoding type='string'><![CDATA[]]></Encoding><RecordDef collapsed='1' type='int'><![CDATA[0]]></RecordDef><Header collapsed='1' type='bool'><![CDATA[0]]></Header><FieldDelimiter type='string'><![CDATA[,]]></FieldDelimiter><RowDelimiter type='string'><![CDATA[<NL>]]></RowDelimiter><Quotes type='int'><![CDATA[0]]></Quotes><FieldFormats></FieldFormats></DelimitedSyntax></FileFormat><Java collapsed='1'><HeapSize type='int'><![CDATA[256]]></HeapSize><ConnectorOtherOptions type='string'><![CDATA[-Dcom.ibm.tools.attach.enable=no -Dcom.ibm.is.cc.options=noisfjars]]></ConnectorOtherOptions></Java></Usage></Properties >"
+      END DSSUBRECORD
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "OutputLinkOrder"
+         Value "0"
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S0P1"
+      OLEType "CCustomOutput"
+      Readonly "0"
+      Name "DSLink"
+      Partner "V0S3|V0S3P1"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "lookup\\type"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantName"
+         Value "1.6"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantLibrary"
+         Value "\"java:com/ibm/iis/cc/filesystem/FileSystemLibrary,$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/ccjava-api.jar;$(DSHOME)/../DSComponents/bin/ccjava.jar;$(DSHOME)/../DSComponents/bin/FileConnector.jar;$(DSHOME);$(DSHOME)/../DSComponents/bin/JISDocHandler.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpcore-4.4.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/httpclient-4.5.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-logging-1.2.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/commons-codec-1.10.jar;$(DSHOME)/../DSComponents/bin/log4j-1.2.17.jar;$(DSHOME)/../../ASBServer/apps/lib/iis/20thirdparty/commons-io-2.4.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/JSON4J-1.1.0.0.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/iis_util.jar;$(DSHOME)/../../ASBNode/eclipse/plugins/com.ibm.iis.client/;$(DSHOME)/../../ASBNode/lib/java/IShive.jar\""
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "VariantVersion"
+         Value "1.0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectFromLink"
+         Value "-1"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectThreshold"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectNumber"
+         Value "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "RejectUsesPercentage"
+         Value "false"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "ConnectorName"
+         Value "FileConnector"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "XMLProperties"
+         Value "<?xml version='1.0' encoding='UTF-16'?><Properties version='1.1'><Common><Context type='int'>1</Context><Variant type='string'>1.6</Variant><DescriptorVersion type='string'>1.0</DescriptorVersion><PartitionType type='int'>-1</PartitionType><RCP type='int'>0</RCP><Reject></Reject></Common><Usage><IsReject type='bool'><![CDATA[0]]></IsReject></Usage></Properties >"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Context"
+         Value "source"
+      END DSSUBRECORD
+      Columns "COutputColumn"
+      BEGIN DSSUBRECORD
+         Name "c1"
+         SqlType "12"
+         Precision "500"
+         Scale "0"
+         Nullable "0"
+         KeyPosition "0"
+         DisplaySize "0"
+         Group "0"
+         SortKey "0"
+         SortType "0"
+         AllowCRLF "0"
+         LevelNo "0"
+         Occurs "0"
+         PadNulls "0"
+         SignOption "0"
+         SortingOrder "0"
+         ArrayHandling "0"
+         SyncIndicator "0"
+         PadChar ""
+         ExtendedPrecision "0"
+         TaggedSubrec "0"
+         OccursVarying "0"
+         PKeyIsCaseless "0"
+         SCDPurpose "0"
+      END DSSUBRECORD
+      LeftTextPos "225"
+      TopTextPos "240"
+      LinkMinimised "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S3"
+      OLEType "CCustomStage"
+      Readonly "0"
+      Name "Copy"
+      NextID "2"
+      InputPins "V0S3P1"
+      StageType "PxCopy"
+      AllowColumnMapping "0"
+      Properties "CCustomProperty"
+      BEGIN DSSUBRECORD
+         Name "force"
+         Value " "
+      END DSSUBRECORD
+      NextRecordID "0"
+   END DSRECORD
+   BEGIN DSRECORD
+      Identifier "V0S3P1"
+      OLEType "CCustomInput"
+      Readonly "0"
+      Name "DSLink"
+      Partner "V0S0|V0S0P1"
+      LinkType "1"
+      MetaBag "CMetaProperty"
+      BEGIN DSSUBRECORD
+         Owner "APT"
+         Name "RTColumnProp"
+         Value "0"
+      END DSSUBRECORD
+      TransactionSize "0"
+      TXNBehaviour "0"
+      EnableTxGroup "0"
+      LinkMinimised "0"
+   END DSRECORD
+END DSJOB
+BEGIN DSPARAMETERSETS
+   BEGIN DSRECORD
+      Identifier "WebHDFS"
+      DateModified "2017-12-08"
+      TimeModified "11.10.39"
+      OLEType "CParameterSet"
+      Readonly "1"
+      Category "\\_Demo"
+      Parameters "CParameters"
+      BEGIN DSSUBRECORD
+         Name "NameNode"
+         Prompt "NameNode"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Principal"
+         Prompt "Principal"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "Keytab"
+         Prompt "Keytab"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      BEGIN DSSUBRECORD
+         Name "HDFSFileName"
+         Prompt "HDFSFileName"
+         ParamType "0"
+         ParamLength "0"
+         ParamScale "0"
+      END DSSUBRECORD
+      ParamValues "NameNode_ValueFile\SNameNode=sample.ibm.com\SPrincipal=dsadm/Clifford@IBM.COM\SKeytab=/home/dsadm/dsadm.keytab\SHDFSFileName=/tmp/test.txt"
+   END DSRECORD
+END DSPARAMETERSETS
